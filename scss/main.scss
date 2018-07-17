@@ -1,0 +1,20 @@
+//Load modules
+@import "module/colors";
+@import "module/mixins";
+@import "module/variables";
+
+//Load partials
+@import "partials/base";
+@import "partials/navbar";
+@import "partials/mainpage";
+@import "partials/submenu";
+@import "partials/submenu-info";
+@import "partials/submenu-mesages";
+@import "partials/submenu-history";
+@import "partials/_signin";
+@import "partials/_signup";
+
+
+
+
+

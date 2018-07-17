@@ -1,0 +1,21 @@
+.page-nav {
+  flex-grow: 1;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-color: $color-three;
+
+  .page-nav-list {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    .page-nav-el {
+      line-height: 172.5px;
+      .page-nav-link {
+        text-align: center;
+        color: $color-two;
+      }
+    }
+  }
+
+}

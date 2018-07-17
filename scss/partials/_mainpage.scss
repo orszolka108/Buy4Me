@@ -1,0 +1,31 @@
+
+.page-main {
+  flex-grow: 11;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  .page-map {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: 100%;
+    background-image: url('https://media.istockphoto.com/vectors/abstract-city-map-illustration-vector-id613540742');
+    background-size: cover;
+    flex-grow: 5;
+    position: relative;
+
+
+  }
+  .page-main-button {
+    color: #85D8CE;
+    margin-right: 40px;
+    position: absolute;
+    bottom: 90px;
+    right: 90px;
+    font-size: 26px;
+
+  }
+}
+
+.fa-shopping-cart {
+  padding-right: 10px;
+}
