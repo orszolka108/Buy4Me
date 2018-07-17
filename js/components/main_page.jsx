@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { Layer, Feature, NavigationControl } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 
 const Map = ReactMapboxGl({
@@ -28,7 +28,6 @@ class MainPage extends React.Component {
                             layout={{ "icon-image": "marker-15" }}>
                             <Feature coordinates={[1, 1]}/>
                         </Layer>
-                        <NavigationControl/>
                     </Map>
                     <button className="page-main-button button">
                         <i className="fas fa-shopping-cart"></i> add list
