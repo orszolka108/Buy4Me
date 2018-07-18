@@ -1,0 +1,73 @@
+
+.add-button {
+  color: #85D8CE;
+  margin-right: 40px;
+  position: absolute;
+  bottom: 90px;
+  right: 70px;
+  padding: 12px 70px;
+  font-size: 20px;
+}
+
+.add-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 37%;
+  height: 100%;
+  background-color: $color-one;
+  border-radius: 25px;
+  text-align: center;
+  .add-list-title {
+    text-transform: uppercase;
+    color: $color-three;
+    text-align: center;
+  }
+}
+.add-list-form {
+  text-align: center;
+  border: 1px solid $color-two;
+  margin: 35px;
+  border-radius: 10px;
+  .add-list-subtitle {
+    color: $color-three
+  }
+  .add-list-input {
+    color: $color-three;
+    padding-left: 10px;
+    width: 200px;
+    height: 30px;
+    border: 1px solid $color-three;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 20px;
+    }
+  }
+  i {
+    color: $color-two;
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .list-button {
+    padding: 10px 20px;
+    margin: 10px;
+    color: $color-two;
+  }
+  .add-list-time {
+    margin: 10px 0;
+    margin-right: 45px;
+  }
+}
+
+.add-list-remove {
+  color: $color-two;
+  margin-left: 10px;
+  .fa-minus-circle {
+    font-size: 22px;
+    &:hover {
+      color: $color-three;
+    }
+  }
+}

@@ -10,7 +10,6 @@ class SubmenuMessage extends React.Component {
                 <p className="messages-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
                     ratione.</p>
                 <i className="messages-delete fas fa-trash"></i>
-                <i className="messages-reply fas fa-reply"></i>
             </div>
             <div className="messages-element">
                 <i className="messages-icon fas fa-envelope-open"></i>
@@ -18,7 +17,6 @@ class SubmenuMessage extends React.Component {
                 <p className="messages-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
                     ratione.</p>
                 <i className="messages-delete fas fa-trash"></i>
-                <i className="messages-reply fas fa-reply"></i>
             </div>
             <div className="messages-element">
                 <i className="messages-icon fas fa-envelope-open"></i>
@@ -26,7 +24,6 @@ class SubmenuMessage extends React.Component {
                 <p className="messages-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
                     ratione.</p>
                 <i className="messages-delete fas fa-trash"></i>
-                <i className="messages-reply fas fa-reply"></i>
             </div>
         </div>
     }

@@ -7,11 +7,7 @@ module.exports = [
         'streetNumber': '1',
         'postCode': '00-000',
         'city': 'Warsaw',
-        'myList': [{
-            'firstItem': 'ser żółty',
-            'secItem': 'pomidory',
-            'thirdItem': 'ziemniaki'
-        }],
+        'myList': [],
         'myListToDo' : [{
             'firstItem': 'olej',
             'secItem': 'jajka',
