@@ -8,7 +8,7 @@
   }
   .history-subtitle {
     color: #085078;
-    text-align: left;
+    text-align: center;
 
   }
 }
@@ -29,7 +29,7 @@
   }
   .history-icon {
     float: left;
-    margin-left: 20px;
+    margin-left: 2px;
     font-size: 20px;
   }
 }
@@ -45,10 +45,22 @@
 }
 .history-time {
   float: right;
+  margin-bottom: 3px;
 }
 
 .history-text {
   float: left;
   margin-top: 10px;
+}
+
+.history-link {
+  text-decoration: none;
+  .history-rating {
+    color: $color-two;
+    font-size: 20px;
+    &:hover {
+      color: $color-two;
+    }
+  }
 }
 

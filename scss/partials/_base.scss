@@ -54,7 +54,13 @@ body {
 }
 
 .close-button {
+  margin: 20px;
   text-decoration: none;
   color: $color-two;
-  padding: 20px;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  &:hover {
+    color: $color-three;
+  }
 }

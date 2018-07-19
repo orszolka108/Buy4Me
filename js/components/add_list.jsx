@@ -15,8 +15,7 @@ function guid() {
 
 class AddList extends React.Component {
     constructor(props) {
-        super();
-        this.zakupy = []
+        super(props);
         this.state = {
             date: '',
             time: '',
@@ -24,6 +23,7 @@ class AddList extends React.Component {
             lng: 0,
             userID: props.userId,
             items: [],
+            showAddList: false
         };
     }
     componentWillReceiveProps(props) {
@@ -32,16 +32,16 @@ class AddList extends React.Component {
             lng: props.lng,
         })
     }
-    handleTimeChange = (evt) => {
-        this.setState({ time: evt.target.value });
+    handleTimeChange = (e) => {
+        this.setState({ time: e.target.value });
     }
 
-    handleDateChange = (evt) => {
-        this.setState({ date: evt.target.value });
+    handleDateChange = (e) => {
+        this.setState({ date: e.target.value });
     }
 
-    handleSubmit = (evt) => {
-        evt.preventDefault();
+    handleSubmit = (e) => {
+        e.preventDefault();
         const { items } = this.state;
         alert(`You have: ${items.length} items in your basket`);
     }
@@ -52,8 +52,7 @@ class AddList extends React.Component {
         this.setState({ items: items});
     }
 
-    handleRemoveItem = (idx) => () => {
-        this.zakupy = this.zakupy.filter((s, sidx) => idx !== sidx);
+    handleRemoveItem = (idx) => (e) => {
         this.setState({ items: this.state.items.filter((s, sidx) => idx !== sidx) });
         e.preventDefault()
     }
@@ -71,6 +70,17 @@ class AddList extends React.Component {
             time: this.state.time,
             date: this.state.date,
         });
+    }
+    handleCloseClick = (e) => {
+        e.preventDefault();
+        console.log("dziecko:" + this.state.showAddList)
+        this.setState ({
+            showAddList: false
+        })
+        if (typeof this.props.giveMeAnswer == 'function') {
+            this.props.giveMeAnswer(this.state.showAddList)
+        }
+
     }
 
 
@@ -92,7 +102,7 @@ class AddList extends React.Component {
         if (this.props.showAddList) {
             return (
                 <div className="add-list">
-                    {/*<a href="/" className='close-button' onClick={this.handleCloseClick}><i className="fas fa-times-circle"></i></a>*/}
+                    <a href="/" className='close-button' onClick={this.handleCloseClick}><i className="fas fa-times-circle"></i></a><br/><br/>
                     <h2 className="add-list-title">Add your shopping list!</h2>
                     <form className="add-list-form" onSubmit={this.handleSubmit}>
 
@@ -136,6 +146,7 @@ class AddList extends React.Component {
                             onClick={this.handleAddItem}
                         ><i className="fas fa-plus"></i>Add new item</button>
                         <button className="list-button button"><i className="fas fa-shopping-basket"></i>Shopping list</button>
+                        <h4 className="add-list-subtitle">When the shopping list expires?</h4>
                         <input
                             type="date"
                             placeholder="When the shopping list expires?"
@@ -145,18 +156,17 @@ class AddList extends React.Component {
                         />
                         <input
                             type="time"
-                            placeholder="When the shopping list expires?"
                             value={this.state.time}
                             onChange={this.handleTimeChange}
                             className="add-list-input add-list-time"
                         />
                     </form>
-                    <button onClick={this.handleAddClick} className="add-button add-list-button button"> add list
+                    <button onClick={this.handleAddClick} className="add-list-final add-list-button button"> add list
                     </button>
                 </div>
             )
         } else {
-            return <div></div>
+            return null
         }
     }
 }
