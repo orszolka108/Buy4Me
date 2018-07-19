@@ -48,8 +48,17 @@ class AddList extends React.Component {
 
     handleAddItem = (e) => {
         var items = this.state.items
+        var inputs = document.getElementsByName("item")
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value.length > 0) {
+                items.push(inputs[i].value)
+            }
+        }
+
+        items = items.filter((item) => item !== "" )
         items.push("")
-        this.setState({ items: items});
+        this.setState({items: items})
     }
 
     handleRemoveItem = (idx) => (e) => {
@@ -73,7 +82,6 @@ class AddList extends React.Component {
     }
     handleCloseClick = (e) => {
         e.preventDefault();
-        console.log("dziecko:" + this.state.showAddList)
         this.setState ({
             showAddList: false
         })
@@ -81,20 +89,6 @@ class AddList extends React.Component {
             this.props.giveMeAnswer(this.state.showAddList)
         }
 
-    }
-
-
-
-    addNewItem = (idx) => (e) => {
-        var item = document.getElementById("item-"+idx)
-        var items = this.state.items
-        if (idx === items.length - 1){
-            items[idx] = item.value
-        } else {
-            items.push(item.value)
-        }
-
-        this.setState({items: items})
     }
 
     render() {
@@ -113,15 +107,13 @@ class AddList extends React.Component {
                                 return (
                                     <div className={`Item #${idx + 1}`}>
                                         <input
+                                            name="item"
                                             type="text"
                                             placeholder={`Item #${idx + 1}`}
                                             value={item.name}
                                             className="add-list-input"
                                             id={`item-${idx}`}
                                         />
-                                        <a onClick={this.addNewItem(idx)}
-                                           className = "add-list-remove">
-                                            <i className="fas fa-plus-circle"></i></a>
                                         <a onClick={this.handleRemoveItem(idx)}
                                            className = "add-list-remove">
                                             <i className="fas fa-minus-circle"></i></a>
