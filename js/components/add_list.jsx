@@ -47,10 +47,10 @@ class AddList extends React.Component {
     }
 
     handleAddItem = (e) => {
-        var items = this.state.items
-        var inputs = document.getElementsByName("item")
+        let items = this.state.items
+        let inputs = document.getElementsByName("item")
 
-        for (var i = 0; i < inputs.length; i++) {
+        for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value.length > 0) {
                 items.push(inputs[i].value)
             }
@@ -70,15 +70,31 @@ class AddList extends React.Component {
 
     handleAddClick = (e) => {
         e.preventDefault();
+        let items = this.state.items;
+        items = items.filter((item) => item !== "" );
+        let inputs = document.getElementsByName("item")
+        inputs.forEach((input) => {
+            if (input.value !== "") {
+                items.push(input.value)
+            }
+        })
+
         let id = guid();
         firebase.database().ref('shoppingList').child(id).set({
             userID: this.state.userID,
-            items: this.state.items,
+            items: items,
             lat: this.state.lat,
             lng: this.state.lng,
             time: this.state.time,
             date: this.state.date,
         });
+        this.setState ({
+            showAddList: false
+        })
+        if (typeof this.props.giveMeAnswer == 'function') {
+            this.props.giveMeAnswer(this.state.showAddList)
+        }
+
     }
     handleCloseClick = (e) => {
         e.preventDefault();
@@ -96,7 +112,14 @@ class AddList extends React.Component {
         if (this.props.showAddList) {
             return (
                 <div className="add-list">
-                    <a href="/" className='close-button' onClick={this.handleCloseClick}><i className="fas fa-times-circle"></i></a><br/><br/>
+                    <a href="/"
+                       className='close-button'
+                       onClick={this.handleCloseClick}
+                    >
+                        <i className="fas fa-times-circle"></i>
+                    </a>
+                    <br/>
+                    <br/>
                     <h2 className="add-list-title">Add your shopping list!</h2>
                     <form className="add-list-form" onSubmit={this.handleSubmit}>
 
@@ -136,9 +159,18 @@ class AddList extends React.Component {
                             className="button list-button add-list-button"
                             type="button"
                             onClick={this.handleAddItem}
-                        ><i className="fas fa-plus"></i>Add new item</button>
-                        <button className="list-button button"><i className="fas fa-shopping-basket"></i>Shopping list</button>
-                        <h4 className="add-list-subtitle">When the shopping list expires?</h4>
+                        >
+                            <i className="fas fa-plus"></i>
+                            Add new item
+                        </button>
+                        <button
+                            className="list-button button">
+                            <i className="fas fa-shopping-basket"></i>
+                            Shopping list
+                        </button>
+                        <h4 className="add-list-subtitle">
+                            When the shopping list expires?
+                        </h4>
                         <input
                             type="date"
                             placeholder="When the shopping list expires?"
@@ -153,7 +185,11 @@ class AddList extends React.Component {
                             className="add-list-input add-list-time"
                         />
                     </form>
-                    <button onClick={this.handleAddClick} className="add-list-final add-list-button button"> add list
+                    <button
+                        onClick={this.handleAddClick}
+                        className="add-list-final add-list-button button"
+                    >
+                        add list
                     </button>
                 </div>
             )

@@ -4,12 +4,13 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
   .page-map {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     width: 100%;
-    height: 100%;
     position: relative;
+    overflow: hidden;
 
 
   }
@@ -18,4 +19,12 @@
 
 .fa-shopping-cart {
   padding-right: 10px;
+}
+
+.added-items {
+  color: #e85a71;
+}
+
+.fa-user {
+  color: #4ea1d3;
 }

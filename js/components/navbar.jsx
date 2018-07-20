@@ -75,25 +75,37 @@ class NavBar extends React.Component {
         return <div className='page-nav'>
                     <ul className="page-nav-list">
                         <li className="page-nav-el" >
-                            <a href="." className="page-nav-link" onClick={this.handleClickInfo}>
+                            <a href="."
+                               className="page-nav-link"
+                               onClick={this.handleClickInfo}
+                            >
                                 <i className="fas fa-user-alt"></i>
                             </a>
                         </li>
                         <Submenu showSubmenuInfo = {this.state.showSubmenuInfo}/>
                         <li className="page-nav-el">
-                            <a href="." className="page-nav-link" onClick={this.handleClickMessage}>
+                            <a href="."
+                               className="page-nav-link"
+                               onClick={this.handleClickMessage}
+                            >
                                 <i className="far fa-comments"></i>
                             </a>
                         </li>
                         <Submenu showSubmenuMessage = {this.state.showSubmenuMessage}/>
                         <li className="page-nav-el">
-                            <a href="." className="page-nav-link" onClick={this.handleClickHistory}>
+                            <a href="."
+                               className="page-nav-link"
+                               onClick={this.handleClickHistory}
+                            >
                                 <i className="fas fa-shopping-basket"></i>
                             </a>
                         </li>
                         <Submenu showSubmenuHistory = {this.state.showSubmenuHistory}/>
                         <li className="page-nav-el">
-                            <a href="." className="page-nav-link" onClick={this.handleClickSettings}>
+                            <a href="."
+                               className="page-nav-link"
+                               onClick={this.handleClickSettings}
+                            >
                                 <i className="fas fa-cogs"></i>
                             </a>
                         </li>

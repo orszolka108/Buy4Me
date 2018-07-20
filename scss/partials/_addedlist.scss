@@ -1,0 +1,27 @@
+.added-list {
+  color: $color-three;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 37%;
+  height: 100%;
+  background-color: $color-one;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  .added-list-title {
+    margin-top: 80px;
+  }
+  .added-list-item {
+    margin: 10px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .button {
+    color: $color-two;
+    margin-top: 30px;
+    padding: 10px 50px;
+  }
+}

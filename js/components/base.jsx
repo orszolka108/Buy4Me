@@ -39,25 +39,26 @@ class Base extends React.Component {
         ref.on('value', (data) => {
             var items = data.val()
             var keys = Object.keys(items)
-            console.log("keys: " + keys)
-            console.log(keys.length)
             var markers = []
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i]
+                console.log(items)
                 markers.push({
                     id: key,
                     lat: items[key].lat - (Math.random() * 0.1),
                     lng: items[key].lng - (Math.random() * 0.1),
                     items: items[key].items,
+                    date: items[key].date,
+                    time: items[key].time
                 })
-                console.log("aaaaaaaaaaaaa")
-                console.log(markers)
             }
             this.setState({
                 lat: this.state.lat,
                 lng: this.state.lng,
                 markers: markers,
-                userId: this.state.userId
+                userId: this.state.userId,
+                time: this.state.time,
+                date: this.state.date
             })
         })
     }
@@ -69,6 +70,8 @@ class Base extends React.Component {
                                   lng={this.state.lng}
                                   userId={this.state.userId}
                                   markers={this.state.markers}
+                                  time={this.state.data}
+                                  date={this.state.time}
                         />
                     </div>
                 </div>

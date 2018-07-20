@@ -1,5 +1,6 @@
 import React from 'react';
 import {AddList} from './add_list.jsx';
+import {AddedList} from './added_list.jsx';
 
 import userList from './addlist';
 
@@ -20,12 +21,16 @@ class MainPage extends React.Component {
         } else {
             markers = []
         }
+
         this.state = {
             lat: props.lat,
             lng: props.lng,
             showAddList: false,
             userId: props.userId,
             markers: markers,
+            showAddedList: false,
+            date: this.props.date,
+            time: this.props.time
         }
     }
 
@@ -38,12 +43,27 @@ class MainPage extends React.Component {
         this.setState ({
             showAddList: !this.state.showAddList
         })
-        console.log(this.state.showAddList)
     }
 
     handleAnswer = (msgFromChild) => {
         this.setState({
             showAddList: msgFromChild
+        })
+    }
+
+    handleListAdded = (marker) => {
+        let show = this.state.showAddedList;
+        console.log(this.state.time)
+        let addedList = (
+            <AddedList
+                showAddedList = {!show}
+                marker = {marker}
+            />
+        )
+        console.log(marker);
+        this.setState ({
+            showAddedList: !show,
+            addedList: addedList
         })
     }
 
@@ -53,31 +73,40 @@ class MainPage extends React.Component {
                 <Map
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
-                        height: "760px",
+                        minHeight: "755px",
                         width: "1100px"
                     }}
+                    type="vector"
                     zoom={[12]}
                     center={[this.state.lng, this.state.lat]}>
-                    <Layer
-                        type="symbol"
-                        id="marker1"
-                        layout={{"icon-image": "star-15", "icon-size": 5}}
-                        paint={{"icon-color": "red"}}
-                    >
-                        <Feature
-                            coordinates={[this.state.lng, this.state.lat]}/>
-                    </Layer>
-                    <Layer
-                        type="symbol"
-                        id="marker2"
-                        layout={{"icon-image": "shop-15", "icon-size": 5}}>
-                        {this.state.markers.map((marker) => (
+                    <Marker coordinates={[this.state.lng, this.state.lat]}>
+                        <div className="add-list-input">
+                            <a className = "add-list-remove">
+                                <i className="fas fa-user"></i></a>
+                                {/*// showAddedList={this.state.showAddedList}*/}
+                        </div>
+                    </Marker>
 
-                            <Feature coordinates={[marker.lng, marker.lat]}/>))
+                        {this.state.markers.map((marker) => {
+                        console.log(marker)
+                           return <Marker coordinates={[marker.lng, marker.lat]}>
+                                <div className="added-list">
+                                    <a className = "added-list-link"
+                                       onClick={(e) => this.handleListAdded(marker)}
+                                    >
+                                        <i className="fas fa-shopping-basket added-items"></i></a>
+                                </div>
+                            </Marker>})
                         }
-                    </Layer>
+                    {this.state.addedList}
                 </Map>
-                <button className="add-button add-list-button button" onClick={this.handleClick} ><i className="fas fa-shopping-cart"></i> add list
+
+                <button
+                    className="add-button add-list-button button"
+                    onClick={this.handleClick}
+                >
+                    <i className="fas fa-shopping-cart"></i>
+                    add list
                 </button>
                 <AddList
                     showAddList={this.state.showAddList}
