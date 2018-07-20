@@ -5,7 +5,18 @@
   z-index: 6;
   width: 30%;
   height: 100%;
-  background-color: rgb(220, 220, 220);
+  background-color: rgba(220, 220, 220, 0.7);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.added-submenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(220, 220, 220, 0.7);
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }

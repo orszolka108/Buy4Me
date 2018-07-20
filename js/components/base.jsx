@@ -42,11 +42,10 @@ class Base extends React.Component {
             var markers = []
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i]
-                console.log(items)
                 markers.push({
                     id: key,
-                    lat: items[key].lat - (Math.random() * 0.1),
-                    lng: items[key].lng - (Math.random() * 0.1),
+                    lat: items[key].lat,
+                    lng: items[key].lng,
                     items: items[key].items,
                     date: items[key].date,
                     time: items[key].time

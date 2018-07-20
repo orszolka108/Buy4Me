@@ -15,7 +15,9 @@ class AddedList extends React.Component {
     }
 
     render() {
-        console.log(this.state.marker)
+        let date = this.state.marker.date;
+        let time = this.state.marker.time;
+
         if (this.props.showAddedList) {
             return (
                 <div className="added-list">
@@ -25,13 +27,16 @@ class AddedList extends React.Component {
                     >
                         <i className="fas fa-times-circle"></i>
                     </a>
-                    <h2 className='added-list-title'>Your neighbours shopping list:</h2>
-                    {/*<p>{this.state.marker.date}</p>*/}
+                    <h1 className='added-list-title'>Your neighbours shopping list:</h1>
                     {this.state.marker.items.map((item) => (
                         <p className='added-list-item'>{item}</p>
                     ))
                     }
-                    <button className="button">super</button>
+                    <p className='added-list-time'><i className="fas fa-calendar-alt"></i>When it expires?</p>
+
+                    <p className='added-date'>{date}</p>
+                    <p className='added-time'>{time}</p>
+                    <button className="button">take me!</button>
                 </div>
             )
         } else {

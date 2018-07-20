@@ -37,6 +37,10 @@ body {
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.3);
   border-bottom-width: 3px;
+  &:focus {
+    outline-color: $color-two;
+    color: $color-two;
+  }
   &:hover {
     background-color: rgba(8,80,120,0.8);
     border-color: #e3e3e3;
@@ -45,6 +49,12 @@ body {
   &:active {
     background-color: #5284a0;
     border-color: #CCC;
+  }
+}
+input {
+  &:focus {
+    outline-color: $color-two;
+    color: $color-two;
   }
 }
 

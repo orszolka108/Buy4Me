@@ -10,6 +10,49 @@ const Map = ReactMapboxGl({
     accessToken: "pk.eyJ1Ijoib3Jzem9sa2ExMDgiLCJhIjoiY2pqcHppMDZpMjFkajNrbzFsbGpvZmpveSJ9.I3mzOw5g7M2Dz0P6JmyXPg"
 });
 
+class SubmenuInfoAdded extends React.Component {
+
+    render () {
+        console.log(this.props.showSubmenuInfo)
+        if (this.props.showSubmenuInfo) {
+            return <div className="submenu-info added-submenu">
+                <div className="submenu-img">
+                    <div className="submenu-photo"></div>
+                    <h1 className="submenu-name">Kate Smith</h1>
+                    <span className="submenu-score">5.0 <i className="fas fa-star"></i></span>
+                    <h3 className="submenu-mail">katesmith@mail.com</h3>
+
+                </div>
+                <div className="submenu-info">
+                    <table className="table submenu-table">
+                        <tbody>
+                        <tr>
+                            <td>Password</td>
+                            <td><i className="fas fa-circle"></i><i className="fas fa-circle"></i><i
+                                className="fas fa-circle"></i><i className="fas fa-circle"></i><i
+                                className="fas fa-circle"></i><i className="fas fa-circle"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Home Address</td>
+                            <td>Marszalkowska 1</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>555-4567-890</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button className="submenu-save button">save</button>
+                    <button className="submenu-edit button">edit</button>
+                </div>
+            </div>
+        } else {
+            return <div></div>
+        }
+
+    }
+}
+
 
 class MainPage extends React.Component {
 
@@ -30,7 +73,8 @@ class MainPage extends React.Component {
             markers: markers,
             showAddedList: false,
             date: this.props.date,
-            time: this.props.time
+            time: this.props.time,
+            showSubmenuInfo: false
         }
     }
 
@@ -53,17 +97,32 @@ class MainPage extends React.Component {
 
     handleListAdded = (marker) => {
         let show = this.state.showAddedList;
-        console.log(this.state.time)
         let addedList = (
             <AddedList
                 showAddedList = {!show}
                 marker = {marker}
             />
         )
-        console.log(marker);
+
         this.setState ({
             showAddedList: !show,
             addedList: addedList
+        })
+    }
+
+    handleAddInfo = (e) => {
+        e.preventDefault();
+        console.log(this.state.showSubmenuInfo)
+        let show = this.state.showSubmenuInfo
+        let addedInfo = (
+            <SubmenuInfoAdded
+                showSubmenuInfo={this.state.showSubmenuInfo}
+            />
+        )
+
+        this.setState ({
+            showSubmenuInfo: !show,
+            addedInfo: addedInfo
         })
     }
 
@@ -81,14 +140,15 @@ class MainPage extends React.Component {
                     center={[this.state.lng, this.state.lat]}>
                     <Marker coordinates={[this.state.lng, this.state.lat]}>
                         <div className="add-list-input">
-                            <a className = "add-list-remove">
+                            <a className = "add-list-remove"
+                                onClick={this.handleAddInfo}
+                            >
                                 <i className="fas fa-user"></i></a>
                                 {/*// showAddedList={this.state.showAddedList}*/}
                         </div>
                     </Marker>
-
+                    {this.state.addedInfo}
                         {this.state.markers.map((marker) => {
-                        console.log(marker)
                            return <Marker coordinates={[marker.lng, marker.lat]}>
                                 <div className="added-list">
                                     <a className = "added-list-link"
