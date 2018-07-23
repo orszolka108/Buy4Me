@@ -132,7 +132,7 @@ class MainPage extends React.Component {
                 <Map
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
-                        minHeight: "755px",
+                        minHeight: "764px",
                         width: "1100px"
                     }}
                     type="vector"
