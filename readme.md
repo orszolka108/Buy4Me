@@ -4,7 +4,7 @@
 Neighbourhood shopping application based on geolocation and maps.  It allows users to add shopping lists and deliver them to each other.
 </br>
 </br>
-[[Preview Website]](https://orszolka108.github.io/BuyMe)
+[[Preview Website]](https://orszolka108.github.io/Buy4Me)
 </br>
 </br>
 <h3>Stack:</h3>
